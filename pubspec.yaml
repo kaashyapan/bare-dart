@@ -2,6 +2,7 @@ name: bare
 description: A BARE library for Dart. An encoding/decoding BARE implementation.
 version: 0.1.0-dev.1
 homepage: https://github.com/kaashyapan/bare-dart
+repository: https://github.com/kaashyapan/bare-dart
 
 environment:
   sdk: ">=2.14.0-0 <3.0.0"
