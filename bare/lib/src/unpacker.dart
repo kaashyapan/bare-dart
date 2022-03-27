@@ -16,16 +16,24 @@ class Unpacker {
 
   final _strCodec = const Utf8Codec();
 
-  bool? unpackBoolOptional() {
-    final isNull = _d.getUint8(_offset);
+  bool unpackNull() {
+    final nullByte = _d.getUint8(_offset);
     _offset++;
-    if (isNull == 0x00) {
-      return null;
-    } else if (isNull == 0x01) {
-      return unpackBool();
+    if (nullByte == 0x00) {
+      return true;
+    } else if (nullByte == 0x01) {
+      return false;
     }
     throw _formatException(
-        'Invalid null indicator at offset ${_offset - 1}', isNull);
+        'Invalid null indicator at offset ${_offset - 1}', nullByte);
+  }
+
+  bool? unpackBoolOptional() {
+    if (unpackNull()) {
+      return null;
+    } else {
+      return unpackBool();
+    }
   }
 
   bool unpackBool() {
@@ -40,15 +48,11 @@ class Unpacker {
   }
 
   int? unpackInt8Optional() {
-    final isNull = _d.getUint8(_offset);
-    _offset++;
-    if (isNull == 0x00) {
+    if (unpackNull()) {
       return null;
-    } else if (isNull == 0x01) {
+    } else {
       return unpackInt8();
     }
-    throw _formatException(
-        'Invalid null indicator at offset ${_offset - 1}', isNull);
   }
 
   int unpackInt8() {
@@ -58,15 +62,11 @@ class Unpacker {
   }
 
   int? unpackUint8Optional() {
-    final isNull = _d.getUint8(_offset);
-    _offset++;
-    if (isNull == 0x00) {
+    if (unpackNull()) {
       return null;
-    } else if (isNull == 0x01) {
+    } else {
       return unpackUint8();
     }
-    throw _formatException(
-        'Invalid null indicator at offset ${_offset - 1}', isNull);
   }
 
   int unpackUint8() {
@@ -76,15 +76,11 @@ class Unpacker {
   }
 
   int? unpackInt16Optional() {
-    final isNull = _d.getUint8(_offset);
-    _offset++;
-    if (isNull == 0x00) {
+    if (unpackNull()) {
       return null;
-    } else if (isNull == 0x01) {
+    } else {
       return unpackInt16();
     }
-    throw _formatException(
-        'Invalid null indicator at offset ${_offset - 1}', isNull);
   }
 
   int unpackInt16() {
@@ -94,15 +90,11 @@ class Unpacker {
   }
 
   int? unpackUint16Optional() {
-    final isNull = _d.getUint8(_offset);
-    _offset++;
-    if (isNull == 0x00) {
+    if (unpackNull()) {
       return null;
-    } else if (isNull == 0x01) {
+    } else {
       return unpackUint16();
     }
-    throw _formatException(
-        'Invalid null indicator at offset ${_offset - 1}', isNull);
   }
 
   int unpackUint16() {
@@ -112,15 +104,11 @@ class Unpacker {
   }
 
   int? unpackInt32Optional() {
-    final isNull = _d.getUint8(_offset);
-    _offset++;
-    if (isNull == 0x00) {
+    if (unpackNull()) {
       return null;
-    } else if (isNull == 0x01) {
+    } else {
       return unpackInt32();
     }
-    throw _formatException(
-        'Invalid null indicator at offset ${_offset - 1}', isNull);
   }
 
   int unpackInt32() {
@@ -130,15 +118,11 @@ class Unpacker {
   }
 
   int? unpackUint32Optional() {
-    final isNull = _d.getUint8(_offset);
-    _offset++;
-    if (isNull == 0x00) {
+    if (unpackNull()) {
       return null;
-    } else if (isNull == 0x01) {
+    } else {
       return unpackUint32();
     }
-    throw _formatException(
-        'Invalid null indicator at offset ${_offset - 1}', isNull);
   }
 
   int unpackUint32() {
@@ -149,15 +133,11 @@ class Unpacker {
 
   /// unpack [int] or `null`.
   Int64? unpackInt64Optional() {
-    final isNull = _d.getUint8(_offset);
-    _offset++;
-    if (isNull == 0x00) {
+    if (unpackNull()) {
       return null;
-    } else if (isNull == 0x01) {
+    } else {
       return unpackInt64();
     }
-    throw _formatException(
-        'Invalid null indicator at offset ${_offset - 1}', isNull);
   }
 
   Int64 unpackInt64() {
@@ -167,15 +147,11 @@ class Unpacker {
   }
 
   Int64? unpackUint64Optional() {
-    final isNull = _d.getUint8(_offset);
-    _offset++;
-    if (isNull == 0x00) {
+    if (unpackNull()) {
       return null;
-    } else if (isNull == 0x01) {
+    } else {
       return unpackUint64();
     }
-    throw _formatException(
-        'Invalid null indicator at offset ${_offset - 1}', isNull);
   }
 
   Int64 unpackUint64() {
@@ -190,15 +166,11 @@ class Unpacker {
   }
 
   Int64? unpackUintOptional() {
-    final isNull = _d.getUint8(_offset);
-    _offset++;
-    if (isNull == 0x00) {
+    if (unpackNull()) {
       return null;
-    } else if (isNull == 0x01) {
+    } else {
       return unpackUint();
     }
-    throw _formatException(
-        'Invalid null indicator at offset ${_offset - 1}', isNull);
   }
 
   Int64 unpackInt() {
@@ -211,28 +183,20 @@ class Unpacker {
   }
 
   Int64? unpackIntOptional() {
-    final isNull = _d.getUint8(_offset);
-    _offset++;
-    if (isNull == 0x00) {
+    if (unpackNull()) {
       return null;
-    } else if (isNull == 0x01) {
+    } else {
       return unpackInt();
     }
-    throw _formatException(
-        'Invalid null indicator at offset ${_offset - 1}', isNull);
   }
 
   /// unpack [double] or `null`.
   double? unpackDoubleOptional() {
-    final isNull = _d.getUint8(_offset);
-    _offset++;
-    if (isNull == 0x00) {
+    if (unpackNull()) {
       return null;
-    } else if (isNull == 0x01) {
+    } else {
       return unpackDouble();
     }
-    throw _formatException(
-        'Invalid null indicator at offset ${_offset - 1}', isNull);
   }
 
   double unpackDouble() {
@@ -244,15 +208,11 @@ class Unpacker {
 
   /// unpack [double] or `null`.
   double? unpackFloatOptional() {
-    final isNull = _d.getUint8(_offset);
-    _offset++;
-    if (isNull == 0x00) {
+    if (unpackNull()) {
       return null;
-    } else if (isNull == 0x01) {
+    } else {
       return unpackFloat();
     }
-    throw _formatException(
-        'Invalid null indicator at offset ${_offset - 1}', isNull);
   }
 
   double unpackFloat() {
@@ -264,11 +224,9 @@ class Unpacker {
 
   /// unpack `List<int>` or null.
   List<int>? unpackBinaryOptional() {
-    final isNull = _d.getUint8(_offset);
-    _offset++;
-    if (isNull == 0x00) {
+    if (unpackNull()) {
       return null;
-    } else if (isNull == 0x01) {
+    } else {
       return unpackBinary();
     }
   }
@@ -283,8 +241,21 @@ class Unpacker {
     return bytes;
   }
 
-  List<int> unpackBinaryFixedLength() {
-    return unpackBinary();
+  List<int> unpackBinaryFixedLength(int length) {
+    List<int> bytes = [];
+    for (var i = 0; i < length; i++) {
+      bytes.add(_d.getUint8(_offset + i));
+    }
+    _offset = _offset + length;
+    return bytes;
+  }
+
+  List<int>? unpackBinaryFixedLengthOptional(int length) {
+    if (unpackNull()) {
+      return null;
+    } else {
+      return unpackBinaryFixedLength(length);
+    }
   }
 
   String unpackString() {
@@ -293,15 +264,11 @@ class Unpacker {
   }
 
   String? unpackStringOptional() {
-    final isNull = _d.getUint8(_offset);
-    _offset++;
-    if (isNull == 0x00) {
+    if (unpackNull()) {
       return null;
-    } else if (isNull == 0x01) {
+    } else {
       return unpackString();
     }
-    throw _formatException(
-        'Invalid null indicator at offset ${_offset - 1}', isNull);
   }
 
   void printBytes() {

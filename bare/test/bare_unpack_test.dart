@@ -1,13 +1,17 @@
 /*
  * Package : Bare
- * Author : S. Hamblett <steve.hamblett@linux.com>
- * Date   : 31/03/2017
- * Copyright :  S.Hamblett
+ * Author : kāśyapan <vichitraveeryan@gmail.com>
+ * Date   : 20/03/2022
+ * Copyright : kāśyapan
  */
 import 'package:bare/bare.dart';
 import 'package:fixnum/fixnum.dart';
 import 'package:test/test.dart';
-import 'package:typed_data/typed_data.dart';
+import 'dart:typed_data';
+import 'common.dart';
+import 'package:collection/collection.dart';
+
+Function deepEq = const DeepCollectionEquality().equals;
 
 void main() {
   // Common
@@ -231,7 +235,7 @@ void main() {
     });
     test('Map', () {
       final x = Packer();
-      final map = {"a": 1, "b": 2, "c": 3};
+      final map = {'a': 1, 'b': 2, 'c': 3};
       x.packLength(map.length);
       map.forEach((k, v) {
         x.packString(k);
@@ -248,5 +252,50 @@ void main() {
       }
       expect(map, map1);
     });
+  });
+
+  test('Object', () {
+    final bytes = [1, 1, 1, 97, 1, 1, 98];
+    final u = Unpacker(Uint8List.fromList(bytes));
+    final newrec = Rec1.unpack(u);
+    expect(newrec.toString(), 'lsrecs : [fld1 : a, fld2 : b]');
+  });
+
+  test('Binary', () {
+    final byts = [7, 1, 1, 1, 97, 1, 1, 98];
+    final u = Unpacker.fromList(byts);
+    final res = u.unpackBinary();
+    expect(deepEq(res, [1, 1, 1, 97, 1, 1, 98]), true);
+  });
+  test('Binary optional', () {
+    final byts = [1, 7, 1, 1, 1, 97, 1, 1, 98];
+    final u = Unpacker.fromList(byts);
+    final res = u.unpackBinaryOptional();
+    expect(deepEq(res, [1, 1, 1, 97, 1, 1, 98]), true);
+  });
+
+  test('Binary Fixed length', () {
+    final byts = [1, 1, 1, 97, 1, 1, 98];
+    final u = Unpacker.fromList(byts);
+    final res = u.unpackBinaryFixedLength(7);
+    expect(deepEq(res, [1, 1, 1, 97, 1, 1, 98]), true);
+  });
+
+  test('Binary Fixed length optional', () {
+    final byts = [1, 1, 1, 1, 97, 1, 1, 98];
+    final u = Unpacker.fromList(byts);
+    final res = u.unpackBinaryFixedLengthOptional(7);
+    expect(deepEq(res, [1, 1, 1, 97, 1, 1, 98]), true);
+  });
+  test('Binary Fixed length excpetin', () {
+    try {
+      final byts = [1, 1, 1, 97, 1, 1, 98];
+      final u = Unpacker.fromList(byts);
+      final res = u.unpackBinaryFixedLength(8);
+      print(res);
+    } catch (e) {
+      return;
+    }
+    throw Exception('Expected Exception');
   });
 }

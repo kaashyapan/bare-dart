@@ -1,0 +1,6 @@
+targets:
+  $default:
+    builders:
+      bare_codegen|bareGenerator:
+        options:
+          to_string: True

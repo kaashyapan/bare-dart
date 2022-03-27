@@ -23,7 +23,7 @@ BARE is for you, if you want to optimize for:
 - Simplicity — no extra junk that isn’t contributing to the core mission
 
 # bare.dart features
-The dart implemenation of BARE messaging fully supports the BARE's IETF internet-draft:[draft-devault-bare-03](https://datatracker.ietf.org/doc/draft-devault-bare/)
+The dart implemenation of BARE messaging fully supports the BARE's IETF internet-draft:[draft-devault-bare-03](https://datatracker.ietf.org/doc/draft-devault-bare/03/)
 
 - Optimized for small messages: binary, not self-describing, no alignment or padding
 - Standardized & simple: the specification is just over 1,000 words

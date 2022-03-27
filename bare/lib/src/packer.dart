@@ -64,6 +64,11 @@ class Packer {
     _dat.setUint8(_offset++, 0x00);
   }
 
+  void packNonNull() {
+    if (_buf.length - _offset < 1) _nextBuf();
+    _dat.setUint8(_offset++, 0x01);
+  }
+
   /// Pack [bool] or `null`.
   void packBoolOptional(bool? v) {
     if (_buf.length - _offset < 1) _nextBuf();
@@ -314,13 +319,28 @@ class Packer {
 
   void packBinary(List<int> buffer) {
     if (_buf.length - _offset < 5) _nextBuf();
+    final length = buffer.length;
+    packLength(length);
     _putBytes(buffer);
+  }
+
+  void packBinaryFixedLengthOptional(int length, List<int>? buffer) {
+    if (_buf.length - _offset < 1) _nextBuf();
+    if (buffer == null) {
+      _dat.setUint8(_offset++, 0x00);
+    } else {
+      _dat.setUint8(_offset++, 0x01);
+      packBinaryFixedLength(length, buffer);
+    }
   }
 
   void packBinaryFixedLength(int length, List<int> buffer) {
     if (_buf.length - _offset < 5) _nextBuf();
-    packLength(length);
-    _putBytes(buffer);
+    if (buffer.length == length) {
+      _putBytes(buffer);
+    } else {
+      throw 'Tried to encode a binary of length ${buffer.length} into a fixed length binary of length ${length}';
+    }
   }
 
   void packLength(int length) {

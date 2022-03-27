@@ -1,0 +1,75 @@
+type Employee str
+type TerminatedEmployee void
+
+type PublicKey data[128]
+type Time str # ISO 8601
+type Address void
+
+type Department enum {
+  ACCOUNTING
+  ADMINISTRATION
+  CUSTOMER_SERVICE
+  DEVELOPMENT
+
+  # Reserved for the CEO
+  JSMITH = 99
+}
+
+type NumFields struct {
+  fld1: int
+  fld2: i8
+  fld3: i16
+  fld4: i32
+  fld5: i64
+  fld6: uint
+  fld7: u8
+  fld8: u16
+  fld9: u32
+  fld10: u64
+  fld11: f32
+  fld12: f64
+}
+
+type PrimitiveFields struct {
+  fld1: bool
+  numfields: NumFields
+  fld2: str
+}
+
+type AggregateFields struct {
+  list1: list<str>
+  list2: list<str>[]
+  list3: list<str>[4]
+  map1: map<str><str>
+  opt1: optional<str>
+  opt2: optional<NumFields>
+  opt3: optional<list<str>[]>
+  opt4: optional<map<str><str>>
+  anon1: list<struct {
+      fld1: bool
+      fld2: str  
+  }>
+  anon2: list<union { Employee | TerminatedEmployee}>
+  anon3: <struct {
+      fld1: bool
+      fld2: optional<str>  
+  }>
+}
+
+
+type Customer struct {
+  name: str
+  email: str
+  address: Address
+  department: Department
+  somedata1: data[]
+  somedata2: data[4]
+  somedata3: optional<data[]>
+  somedata4: optional<data[4]>
+  orders: list<struct {
+    orderId: str
+    orderDesc: str
+  }>
+}
+
+type RecordType union {Customer | AggregateFields | PrimitiveFields | Address = 90 | Department}

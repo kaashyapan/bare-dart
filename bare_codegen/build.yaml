@@ -1,0 +1,20 @@
+targets:
+  $default:
+    builders:
+      bare_codegen|bareGenerator:
+        enabled: True
+  
+builders:
+  bareGenerator:
+    import: 'package:bare_codegen/bare_codegen.dart'
+    builder_factories: ['bareGenerator']
+    build_extensions:
+      .bare:
+        - .dart
+        - .bare.dart
+    build_to: source
+    auto_apply: dependents
+    defaults:
+      options:
+        to_string: True
+        immutable: False
