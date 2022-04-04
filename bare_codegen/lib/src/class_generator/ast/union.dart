@@ -3,8 +3,9 @@ import 'package:bare_codegen/src/class_generator/anonymous.dart';
 
 class AstUnion {
   late String name;
+  bool anonymous = false;
   late List<AstUnionMember> fields = List.empty();
-  AstUnion({required this.name, required this.fields});
+  AstUnion({required this.name, required this.fields, this.anonymous = false});
 
   @override
   String toString() {
@@ -148,7 +149,6 @@ class AstUnion {
 
   packMethod(namestr) {
     sanitize();
-    if (name.startsWith('Anon')) AnonymousCounter().add(this);
     return '${namestr}.pack(p)';
   }
 
@@ -161,9 +161,6 @@ class AstUnion {
     var idx = 0;
     name = name.trim().pascalCase;
 
-    if (name == 'Anon') {
-      name = name + AnonymousCounter().get().toString();
-    }
     name = name.replaceAll('-', '');
 
     fields.forEach((e) {

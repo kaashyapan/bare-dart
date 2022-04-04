@@ -1,5 +1,5 @@
 /////////////////////////////////////////////////////////////////
-// Generated code by bare_codegen - Fri, Apr 01, 2022 03:45 AM //
+// Generated code by bare_codegen - Mon, Apr 04, 2022 03:08 PM //
 /////////////////////////////////////////////////////////////////
 
 part of 'bare_sample.dart';
@@ -169,11 +169,11 @@ extension CustomerBare on Customer {
     Address address;
     address = AddressBare.unpack(p);
 
-    List<Anon1> orders;
-    orders = <Anon1>[];
+    List<Orders1> orders;
+    orders = <Orders1>[];
     final ordersLength = p.unpackLength();
     for (var i = 0; i < ordersLength; i++) {
-      final e = Anon1Bare.unpack(p);
+      final e = Orders1Bare.unpack(p);
       orders.add(e);
     }
 
@@ -274,14 +274,14 @@ extension EmployeeBare on Employee {
   }
 }
 
-extension Anon1Bare on Anon1 {
+extension Orders1Bare on Orders1 {
   Uint8List toBare() {
     final x = Packer();
     pack(x);
     return x.takeBytes();
   }
 
-  static Anon1 fromBare(data) {
+  static Orders1 fromBare(data) {
     Unpacker unpacker = Unpacker.fromList(data);
     return unpack(unpacker);
   }
@@ -292,9 +292,9 @@ extension Anon1Bare on Anon1 {
     return p;
   }
 
-  static Anon1 unpack(Unpacker p) {
+  static Orders1 unpack(Unpacker p) {
     final orderId = p.unpackInt64();
     final quantity = p.unpackInt32();
-    return Anon1(orderId: orderId, quantity: quantity);
+    return Orders1(orderId: orderId, quantity: quantity);
   }
 }

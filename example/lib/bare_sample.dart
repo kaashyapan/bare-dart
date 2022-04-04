@@ -1,5 +1,5 @@
 /////////////////////////////////////////////////////////////////
-// Generated code by bare_codegen - Fri, Apr 01, 2022 03:45 AM //
+// Generated code by bare_codegen - Mon, Apr 04, 2022 03:08 PM //
 /////////////////////////////////////////////////////////////////
 
 import 'package:bare/bare.dart';
@@ -56,7 +56,7 @@ class Customer {
   String name;
   String email;
   Address address;
-  List<Anon1> orders;
+  List<Orders1> orders;
   Map<String, List<int>> metadata;
   Customer(
       {required this.name,
@@ -96,13 +96,13 @@ class Employee {
       'Employee { name: ${name}, email: ${email}, address: ${address}, department: ${department}, hireDate: ${hireDate}, publicKey: ${publicKey}, metadata: ${metadata} }';
 }
 
-class Anon1 {
+class Orders1 {
   Int64 orderId;
   int quantity;
-  Anon1({required this.orderId, required this.quantity});
+  Orders1({required this.orderId, required this.quantity});
 
-  static Anon1 fromBare(data) => Anon1Bare.fromBare(data);
+  static Orders1 fromBare(data) => Orders1Bare.fromBare(data);
 
   @override
-  String toString() => 'Anon1 { orderId: ${orderId}, quantity: ${quantity} }';
+  String toString() => 'Orders1 { orderId: ${orderId}, quantity: ${quantity} }';
 }

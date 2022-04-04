@@ -30,7 +30,7 @@ void main() {
         somedata3: [11, 77, 121, 32],
         somedata4: [11, 77, 121, 32],
         department: Department.ACCOUNTING,
-        orders: [Anon4(orderId: "true", orderDesc: "fld2")]); //
+        orders: [Orders4(orderId: "true", orderDesc: "fld2")]); //
     final byts = e.toBare();
     final e1 = Customer.fromBare(byts);
     expect(e.toString(), e1.toString());
@@ -83,9 +83,9 @@ void main() {
         list2: [],
         list3: ['a', 'b', 'c', 'd'],
         map1: {'a': '1', 'b': '2'},
-        anon1: [Anon1(fld1: true, fld2: "3")],
+        anon1: [Anon11(fld1: true, fld2: "3")],
         anon2: [],
-        anon3: Anon3(fld1: false, fld2: "fld2"));
+        anon3: Anon33(fld1: false, fld2: "fld2"));
     final byts = e.toBare();
     final e1 = AggregateFields.fromBare(byts);
     expect(e.toString(), e1.toString());
@@ -115,11 +115,11 @@ void main() {
         opt2: numfields,
         opt3: ['a', 'b'],
         opt4: {'a': '1', 'b': '2'},
-        anon1: [Anon1(fld1: true, fld2: "3")],
+        anon1: [Anon11(fld1: true, fld2: "3")],
         anon2: [
-          Anon2(kind: Anon2Kind.EMPLOYEE, value: Employee(value: "value"))
+          Anon22(kind: Anon22Kind.EMPLOYEE, value: Employee(value: "value"))
         ],
-        anon3: Anon3(fld1: false, fld2: "fld2"));
+        anon3: Anon33(fld1: false, fld2: "fld2"));
     final byts = e.toBare();
     final e1 = AggregateFields.fromBare(byts);
     expect(e.toString(), e1.toString());
@@ -141,7 +141,7 @@ void main() {
         somedata3: [11, 77, 121, 32],
         somedata4: [11, 77, 121, 32],
         department: Department.ACCOUNTING,
-        orders: [Anon4(orderId: "true", orderDesc: "fld2")]); //
+        orders: [Orders4(orderId: "true", orderDesc: "fld2")]); //
 
     final e = RecordType(kind: RecordTypeKind.CUSTOMER, value: customer);
     final byts = e.toBare();
@@ -173,13 +173,13 @@ void main() {
         opt2: numfields,
         opt3: ['a', 'b'],
         opt4: {'a': '1', 'b': '2'},
-        anon1: [Anon1(fld1: true, fld2: "3")],
+        anon1: [Anon11(fld1: true, fld2: "3")],
         anon2: [
-          Anon2(
-              kind: Anon2Kind.EMPLOYEE,
+          Anon22(
+              kind: Anon22Kind.EMPLOYEE,
               value: Employee(value: "Employee value"))
         ],
-        anon3: Anon3(fld1: false, fld2: "fld2"));
+        anon3: Anon33(fld1: false, fld2: "fld2"));
 
     final e = RecordType(
         kind: RecordTypeKind.AGGREGATE_FIELDS, value: aggregateFields);

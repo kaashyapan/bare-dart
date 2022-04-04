@@ -30,9 +30,9 @@ class AnonymousCounter {
     this.structs = [];
   }
 
-  int get() {
+  String get() {
     this.counter = counter + 1;
-    return counter;
+    return counter.toString();
   }
 
   add(dynamic s) {

@@ -1,5 +1,5 @@
 /////////////////////////////////////////////////////////////////
-// Generated code by bare_codegen - Fri, Apr 01, 2022 03:45 AM //
+// Generated code by bare_codegen - Mon, Apr 04, 2022 03:08 PM //
 /////////////////////////////////////////////////////////////////
 
 part of 'schema.dart';
@@ -363,23 +363,23 @@ extension AggregateFieldsBare on AggregateFields {
       opt4 = _map1;
     }
     ;
-    List<Anon1> anon1;
-    anon1 = <Anon1>[];
+    List<Anon11> anon1;
+    anon1 = <Anon11>[];
     final anon1Length = p.unpackLength();
     for (var i = 0; i < anon1Length; i++) {
-      final e = Anon1Bare.unpack(p);
+      final e = Anon11Bare.unpack(p);
       anon1.add(e);
     }
 
-    List<Anon2> anon2;
-    anon2 = <Anon2>[];
+    List<Anon22> anon2;
+    anon2 = <Anon22>[];
     final anon2Length = p.unpackLength();
     for (var i = 0; i < anon2Length; i++) {
-      final e = Anon2Bare.unpack(p);
+      final e = Anon22Bare.unpack(p);
       anon2.add(e);
     }
 
-    final anon3 = Anon3Bare.unpack(p);
+    final anon3 = Anon33Bare.unpack(p);
     return AggregateFields(
         list1: list1,
         list2: list2,
@@ -435,11 +435,11 @@ extension CustomerBare on Customer {
     final somedata2 = p.unpackBinaryFixedLength(4);
     final somedata3 = p.unpackBinaryOptional();
     final somedata4 = p.unpackBinaryFixedLengthOptional(4);
-    List<Anon4> orders;
-    orders = <Anon4>[];
+    List<Orders4> orders;
+    orders = <Orders4>[];
     final ordersLength = p.unpackLength();
     for (var i = 0; i < ordersLength; i++) {
-      final e = Anon4Bare.unpack(p);
+      final e = Orders4Bare.unpack(p);
       orders.add(e);
     }
 
@@ -528,14 +528,14 @@ extension RecordTypeKindBare on RecordTypeKind {
   }
 }
 
-extension Anon1Bare on Anon1 {
+extension Anon11Bare on Anon11 {
   Uint8List toBare() {
     final x = Packer();
     pack(x);
     return x.takeBytes();
   }
 
-  static Anon1 fromBare(data) {
+  static Anon11 fromBare(data) {
     Unpacker unpacker = Unpacker.fromList(data);
     return unpack(unpacker);
   }
@@ -546,21 +546,21 @@ extension Anon1Bare on Anon1 {
     return p;
   }
 
-  static Anon1 unpack(Unpacker p) {
+  static Anon11 unpack(Unpacker p) {
     final fld1 = p.unpackBool();
     final fld2 = p.unpackString();
-    return Anon1(fld1: fld1, fld2: fld2);
+    return Anon11(fld1: fld1, fld2: fld2);
   }
 }
 
-extension Anon2Bare on Anon2 {
+extension Anon22Bare on Anon22 {
   Uint8List toBare() {
     final x = Packer();
     pack(x);
     return x.takeBytes();
   }
 
-  static Anon2 fromBare(data) {
+  static Anon22 fromBare(data) {
     Unpacker unpacker = Unpacker.fromList(data);
     return unpack(unpacker);
   }
@@ -574,41 +574,41 @@ extension Anon2Bare on Anon2 {
     return p;
   }
 
-  static Anon2 unpack(Unpacker p) {
+  static Anon22 unpack(Unpacker p) {
     final bareIdx = p.unpackUint64().toInt();
 
     if (bareIdx == 0) {
-      final _kind = Anon2Kind.EMPLOYEE;
+      final _kind = Anon22Kind.EMPLOYEE;
       final _value = EmployeeBare.unpack(p);
-      return Anon2(kind: _kind, value: _value);
+      return Anon22(kind: _kind, value: _value);
     }
 
     if (bareIdx == 1) {
-      final _kind = Anon2Kind.TERMINATED_EMPLOYEE;
+      final _kind = Anon22Kind.TERMINATED_EMPLOYEE;
       final _value = TerminatedEmployeeBare.unpack(p);
-      return Anon2(kind: _kind, value: _value);
+      return Anon22(kind: _kind, value: _value);
     }
 
-    throw ('Invalid Anon2 enum option');
+    throw ('Invalid Anon22 enum option');
   }
 }
 
-extension Anon2KindBare on Anon2Kind {
+extension Anon22KindBare on Anon22Kind {
   int get getBareIdx {
-    if (this == Anon2Kind.EMPLOYEE) return 0;
-    if (this == Anon2Kind.TERMINATED_EMPLOYEE) return 1;
-    throw ('Invalid Anon2 enum option');
+    if (this == Anon22Kind.EMPLOYEE) return 0;
+    if (this == Anon22Kind.TERMINATED_EMPLOYEE) return 1;
+    throw ('Invalid Anon22 enum option');
   }
 }
 
-extension Anon3Bare on Anon3 {
+extension Anon33Bare on Anon33 {
   Uint8List toBare() {
     final x = Packer();
     pack(x);
     return x.takeBytes();
   }
 
-  static Anon3 fromBare(data) {
+  static Anon33 fromBare(data) {
     Unpacker unpacker = Unpacker.fromList(data);
     return unpack(unpacker);
   }
@@ -619,21 +619,21 @@ extension Anon3Bare on Anon3 {
     return p;
   }
 
-  static Anon3 unpack(Unpacker p) {
+  static Anon33 unpack(Unpacker p) {
     final fld1 = p.unpackBool();
     final fld2 = p.unpackStringOptional();
-    return Anon3(fld1: fld1, fld2: fld2);
+    return Anon33(fld1: fld1, fld2: fld2);
   }
 }
 
-extension Anon4Bare on Anon4 {
+extension Orders4Bare on Orders4 {
   Uint8List toBare() {
     final x = Packer();
     pack(x);
     return x.takeBytes();
   }
 
-  static Anon4 fromBare(data) {
+  static Orders4 fromBare(data) {
     Unpacker unpacker = Unpacker.fromList(data);
     return unpack(unpacker);
   }
@@ -644,9 +644,9 @@ extension Anon4Bare on Anon4 {
     return p;
   }
 
-  static Anon4 unpack(Unpacker p) {
+  static Orders4 unpack(Unpacker p) {
     final orderId = p.unpackString();
     final orderDesc = p.unpackString();
-    return Anon4(orderId: orderId, orderDesc: orderDesc);
+    return Orders4(orderId: orderId, orderDesc: orderDesc);
   }
 }

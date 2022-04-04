@@ -125,7 +125,7 @@ class Customer {
   String name;
   String email;
   Address address;
-  List<Anon1> orders;
+  List<Orders1> orders;
   Map<String, List<int>> metadata;
   Customer(
       {required this.name,
@@ -175,8 +175,8 @@ extension CustomerBare on Customer {
     Address address;
     address = AddressBare.unpack(p);
 
-    List<Anon1> orders;
-    orders = <Anon1>[];
+    List<Orders1> orders;
+    orders = <Orders1>[];
     final ordersLength = p.unpackLength();
     for (var i = 0; i < ordersLength; i++) {
       final e = Anon1Bare.unpack(p);

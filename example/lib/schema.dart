@@ -1,5 +1,5 @@
 /////////////////////////////////////////////////////////////////
-// Generated code by bare_codegen - Fri, Apr 01, 2022 03:45 AM //
+// Generated code by bare_codegen - Mon, Apr 04, 2022 03:08 PM //
 /////////////////////////////////////////////////////////////////
 
 import 'package:bare/bare.dart';
@@ -108,9 +108,9 @@ class AggregateFields {
   NumFields? opt2;
   List<String>? opt3;
   Map<String, String>? opt4;
-  List<Anon1> anon1;
-  List<Anon2> anon2;
-  Anon3 anon3;
+  List<Anon11> anon1;
+  List<Anon22> anon2;
+  Anon33 anon3;
   AggregateFields(
       {required this.list1,
       required this.list2,
@@ -140,7 +140,7 @@ class Customer {
   List<int> somedata2;
   List<int>? somedata3;
   List<int>? somedata4;
-  List<Anon4> orders;
+  List<Orders4> orders;
   Customer(
       {required this.name,
       required this.email,
@@ -179,52 +179,53 @@ class RecordType {
   String toString() => '${kind}  ${value}';
 }
 
-class Anon1 {
+class Anon11 {
   bool fld1;
   String fld2;
-  Anon1({required this.fld1, required this.fld2});
+  Anon11({required this.fld1, required this.fld2});
 
-  static Anon1 fromBare(data) => Anon1Bare.fromBare(data);
+  static Anon11 fromBare(data) => Anon11Bare.fromBare(data);
 
   @override
-  String toString() => 'Anon1 { fld1: ${fld1}, fld2: ${fld2} }';
+  String toString() => 'Anon11 { fld1: ${fld1}, fld2: ${fld2} }';
 }
 
-enum Anon2Kind {
+enum Anon22Kind {
   EMPLOYEE,
   TERMINATED_EMPLOYEE,
 }
 
-class Anon2 {
-  Anon2Kind kind;
+class Anon22 {
+  Anon22Kind kind;
   dynamic value;
 
-  Anon2({required this.kind, required this.value});
+  Anon22({required this.kind, required this.value});
 
-  static Anon2 fromBare(data) => Anon2Bare.fromBare(data);
+  static Anon22 fromBare(data) => Anon22Bare.fromBare(data);
 
   @override
   String toString() => '${kind}  ${value}';
 }
 
-class Anon3 {
+class Anon33 {
   bool fld1;
   String? fld2;
-  Anon3({required this.fld1, this.fld2});
+  Anon33({required this.fld1, this.fld2});
 
-  static Anon3 fromBare(data) => Anon3Bare.fromBare(data);
+  static Anon33 fromBare(data) => Anon33Bare.fromBare(data);
 
   @override
-  String toString() => 'Anon3 { fld1: ${fld1}, fld2: ${fld2} }';
+  String toString() => 'Anon33 { fld1: ${fld1}, fld2: ${fld2} }';
 }
 
-class Anon4 {
+class Orders4 {
   String orderId;
   String orderDesc;
-  Anon4({required this.orderId, required this.orderDesc});
+  Orders4({required this.orderId, required this.orderDesc});
 
-  static Anon4 fromBare(data) => Anon4Bare.fromBare(data);
+  static Orders4 fromBare(data) => Orders4Bare.fromBare(data);
 
   @override
-  String toString() => 'Anon4 { orderId: ${orderId}, orderDesc: ${orderDesc} }';
+  String toString() =>
+      'Orders4 { orderId: ${orderId}, orderDesc: ${orderDesc} }';
 }

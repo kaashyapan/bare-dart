@@ -1,5 +1,7 @@
 import 'package:petitparser/petitparser.dart';
 import 'package:bare_codegen/src/class_generator/ast.dart';
+import 'package:recase/recase.dart';
+import 'package:bare_codegen/src/class_generator/anonymous.dart';
 
 /// Dart grammar definition.
 class BareGrammarDefinition extends GrammarDefinition {
@@ -139,7 +141,70 @@ class BareGrammarDefinition extends GrammarDefinition {
               ref1(token, ':').flatten() &
               ref0(nonVoidTypeToken))
           .map((v) {
-        return AstStructMember(name: v[0], type_: v[2]);
+        final memberType = v[2];
+        final name = v[0];
+
+        if (memberType is AstUnion) {
+          final idx = AnonymousCounter().get();
+          memberType.name = (name as String).pascalCase + idx;
+          memberType.anonymous = true;
+          AnonymousCounter().add(memberType);
+        }
+        if (memberType is AstStruct) {
+          final idx = AnonymousCounter().get();
+          memberType.name = (name as String).pascalCase + idx;
+          memberType.anonymous = true;
+          AnonymousCounter().add(memberType);
+        }
+        if (memberType is AstListType && memberType.baseType is AstStruct) {
+          final idx = AnonymousCounter().get();
+          memberType.baseType.name = (name as String).pascalCase + idx;
+          memberType.baseType.anonymous = true;
+          AnonymousCounter().add(memberType.baseType);
+        }
+        if (memberType is AstListType && memberType.baseType is AstUnion) {
+          final idx = AnonymousCounter().get();
+          memberType.baseType.name = (name as String).pascalCase + idx;
+          memberType.baseType.anonymous = true;
+          AnonymousCounter().add(memberType.baseType);
+        }
+        if (memberType is AstOptionalType && memberType.baseType is AstStruct) {
+          final idx = AnonymousCounter().get();
+          memberType.baseType.name = (name as String).pascalCase + idx;
+          memberType.baseType.anonymous = true;
+          AnonymousCounter().add(memberType.baseType);
+        }
+        if (memberType is AstOptionalType && memberType.baseType is AstUnion) {
+          final idx = AnonymousCounter().get();
+          memberType.baseType.name = (name as String).pascalCase + idx;
+          memberType.baseType.anonymous = true;
+          AnonymousCounter().add(memberType.baseType);
+        }
+        if (memberType is AstMapType && memberType.keyType is AstStruct) {
+          final idx = AnonymousCounter().get();
+          memberType.keyType.name = (name as String).pascalCase + idx;
+          memberType.keyType.anonymous = true;
+          AnonymousCounter().add(memberType.keyType);
+        }
+        if (memberType is AstMapType && memberType.keyType is AstUnion) {
+          final idx = AnonymousCounter().get();
+          memberType.keyType.name = (name as String).pascalCase + idx;
+          memberType.keyType.anonymous = true;
+          AnonymousCounter().add(memberType.keyType);
+        }
+        if (memberType is AstMapType && memberType.valueType is AstStruct) {
+          final idx = AnonymousCounter().get();
+          memberType.valueType.name = (name as String).pascalCase + idx;
+          memberType.valueType.anonymous = true;
+          AnonymousCounter().add(memberType.valueType);
+        }
+        if (memberType is AstMapType && memberType.valueType is AstUnion) {
+          final idx = AnonymousCounter().get();
+          memberType.valueType.name = (name as String).pascalCase + idx;
+          memberType.valueType.anonymous = true;
+          AnonymousCounter().add(memberType.valueType);
+        }
+        return AstStructMember(name: name, type_: memberType);
       });
 
   Parser unionMemberDefinition() => (((ref0(userTypeIdToken).flatten() &
