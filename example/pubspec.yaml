@@ -1,6 +1,12 @@
 name: bare_codegen_example
 description: A package consuming bare_codegen
-  
+platforms:
+  android:
+  ios:
+  linux:
+  macos:
+  windows:
+
 environment:
   sdk: '>=2.14.0 <3.0.0'
 
