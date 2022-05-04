@@ -309,7 +309,7 @@ class AstListType {
          ${namestr} = <${typeName}>[];
         final ${namestr}Length = p.unpackLength();
         for (var i = 0; i < ${namestr}Length; i++) {
-          ${baseunpackStr};
+          final ${baseunpackStr};
           ${namestr}.add(e);
         }
     ''');
@@ -317,7 +317,7 @@ class AstListType {
       return ('''
         ${namestr} = <${typeName}>[];
         for (var i = 0; i < ${size}; i++) {
-          ${baseunpackStr};
+          final ${baseunpackStr};
           ${namestr}.add(e);
         }
       ''');
