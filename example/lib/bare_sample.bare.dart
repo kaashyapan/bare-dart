@@ -1,5 +1,5 @@
 /////////////////////////////////////////////////////////////////
-// Generated code by bare_codegen - Thu, May 05, 2022 02:44 PM //
+// Generated code by bare_codegen - Thu, May 05, 2022 06:11 PM //
 /////////////////////////////////////////////////////////////////
 
 part of 'bare_sample.dart';
@@ -52,7 +52,7 @@ extension TimeBare on Time {
 
 extension DepartmentBare on Department {
   Packer pack(Packer p) {
-    p.packUint64(Int64(_getBareIdx));
+    p.packUint8(_getBareIdx);
     return p;
   }
 
@@ -68,7 +68,7 @@ extension DepartmentBare on Department {
   }
 
   static Department unpack(Unpacker data) {
-    final bareIdx = data.unpackUint64().toInt();
+    final bareIdx = data.unpackUint8();
 
     if (bareIdx == 0) return Department.ACCOUNTING;
     if (bareIdx == 1) return Department.ADMINISTRATION;

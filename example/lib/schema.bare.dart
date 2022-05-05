@@ -1,5 +1,5 @@
 /////////////////////////////////////////////////////////////////
-// Generated code by bare_codegen - Thu, May 05, 2022 02:44 PM //
+// Generated code by bare_codegen - Thu, May 05, 2022 06:11 PM //
 /////////////////////////////////////////////////////////////////
 
 part of 'schema.dart';
@@ -95,7 +95,7 @@ extension AddressBare on Address {
 
 extension DepartmentBare on Department {
   Packer pack(Packer p) {
-    p.packUint64(Int64(_getBareIdx));
+    p.packUint8(_getBareIdx);
     return p;
   }
 
@@ -111,7 +111,7 @@ extension DepartmentBare on Department {
   }
 
   static Department unpack(Unpacker data) {
-    final bareIdx = data.unpackUint64().toInt();
+    final bareIdx = data.unpackUint8();
 
     if (bareIdx == 0) return Department.ACCOUNTING;
     if (bareIdx == 1) return Department.ADMINISTRATION;
@@ -470,7 +470,7 @@ extension RecordTypeBare on RecordType {
 
   Packer pack(Packer p) {
     final bareIdx = kind.getBareIdx;
-    p.packUint64(Int64(bareIdx));
+    p.packUint8(bareIdx);
 
     if (bareIdx == 0) (value as Customer).pack(p);
     if (bareIdx == 1) (value as AggregateFields).pack(p);
@@ -481,7 +481,7 @@ extension RecordTypeBare on RecordType {
   }
 
   static RecordType unpack(Unpacker p) {
-    final bareIdx = p.unpackUint64().toInt();
+    final bareIdx = p.unpackUint8();
 
     if (bareIdx == 0) {
       final _kind = RecordTypeKind.CUSTOMER;
@@ -567,7 +567,7 @@ extension Anon22Bare on Anon22 {
 
   Packer pack(Packer p) {
     final bareIdx = kind.getBareIdx;
-    p.packUint64(Int64(bareIdx));
+    p.packUint8(bareIdx);
 
     if (bareIdx == 0) (value as Employee).pack(p);
     if (bareIdx == 1) (value as TerminatedEmployee).pack(p);
@@ -575,7 +575,7 @@ extension Anon22Bare on Anon22 {
   }
 
   static Anon22 unpack(Unpacker p) {
-    final bareIdx = p.unpackUint64().toInt();
+    final bareIdx = p.unpackUint8();
 
     if (bareIdx == 0) {
       final _kind = Anon22Kind.EMPLOYEE;

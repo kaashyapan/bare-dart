@@ -1,5 +1,5 @@
 /////////////////////////////////////////////////////////////////
-// Generated code by bare_codegen - Thu, May 05, 2022 02:44 PM //
+// Generated code by bare_codegen - Thu, May 05, 2022 06:11 PM //
 /////////////////////////////////////////////////////////////////
 
 part of 'fgp.dart';
@@ -120,7 +120,7 @@ extension AppResponseBare on AppResponse {
 
   Packer pack(Packer p) {
     final bareIdx = kind.getBareIdx;
-    p.packUint64(Int64(bareIdx));
+    p.packUint8(bareIdx);
 
     if (bareIdx == 0) (value as AppInfo).pack(p);
     if (bareIdx == 1) (value as AppWarning).pack(p);
@@ -131,7 +131,7 @@ extension AppResponseBare on AppResponse {
   }
 
   static AppResponse unpack(Unpacker p) {
-    final bareIdx = p.unpackUint64().toInt();
+    final bareIdx = p.unpackUint8();
 
     if (bareIdx == 0) {
       final _kind = AppResponseKind.APP_INFO;
@@ -1049,7 +1049,7 @@ extension FgpRequestBare on FgpRequest {
 
   Packer pack(Packer p) {
     final bareIdx = kind.getBareIdx;
-    p.packUint64(Int64(bareIdx));
+    p.packUint8(bareIdx);
 
     if (bareIdx == 0) (value as AddNewSpecies).pack(p);
     if (bareIdx == 1) (value as UpdateSpecies).pack(p);
@@ -1068,7 +1068,7 @@ extension FgpRequestBare on FgpRequest {
   }
 
   static FgpRequest unpack(Unpacker p) {
-    final bareIdx = p.unpackUint64().toInt();
+    final bareIdx = p.unpackUint8();
 
     if (bareIdx == 0) {
       final _kind = FgpRequestKind.ADD_NEW_SPECIES;
@@ -1185,7 +1185,7 @@ extension FgpResponseBare on FgpResponse {
 
   Packer pack(Packer p) {
     final bareIdx = kind.getBareIdx;
-    p.packUint64(Int64(bareIdx));
+    p.packUint8(bareIdx);
 
     if (bareIdx == 0) (value as SpeciesList).pack(p);
     if (bareIdx == 1) (value as RegionList).pack(p);
@@ -1198,7 +1198,7 @@ extension FgpResponseBare on FgpResponse {
   }
 
   static FgpResponse unpack(Unpacker p) {
-    final bareIdx = p.unpackUint64().toInt();
+    final bareIdx = p.unpackUint8();
 
     if (bareIdx == 0) {
       final _kind = FgpResponseKind.SPECIES_LIST;
