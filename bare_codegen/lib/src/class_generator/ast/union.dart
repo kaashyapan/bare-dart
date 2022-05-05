@@ -98,7 +98,7 @@ class AstUnion {
     buffer.writeln('''
         Packer pack(Packer p) {
           final bareIdx = kind.getBareIdx;
-          p.packUint64(Int64(bareIdx));
+          p.packUint8(bareIdx);
     ''');
 
     fields.forEach((f) {
@@ -112,7 +112,7 @@ class AstUnion {
 
     buffer.writeln('''
       static ${name} unpack(Unpacker p) {
-        final bareIdx = p.unpackUint64().toInt();
+        final bareIdx = p.unpackUint8();
     ''');
 
     fields.forEach((f) {

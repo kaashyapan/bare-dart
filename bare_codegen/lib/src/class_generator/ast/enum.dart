@@ -32,7 +32,7 @@ class AstEnum {
     buffer.writeln('''
       extension ${name}Bare on ${name} { 
         Packer pack(Packer p) {
-          p.packUint64(Int64(_getBareIdx));
+          p.packUint8(_getBareIdx);
           return p;
         }
  
@@ -51,7 +51,7 @@ class AstEnum {
     // FromBare
     buffer.writeln('''
       static ${name} unpack(Unpacker data) {
-        final bareIdx = data.unpackUint64().toInt();
+        final bareIdx = data.unpackUint8();
     ''');
 
     fields.forEach((f) {
