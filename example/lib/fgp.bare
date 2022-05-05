@@ -1,0 +1,134 @@
+type AppInfo str
+type AppError str
+type AppWarning str
+type AppSuccess str
+type OkResponse void
+
+type AppResponse union { AppInfo | AppWarning | AppError | AppSuccess | OkResponse}
+
+type Date str
+type Guid str
+
+type Prts list<i32>[]
+
+type Parts struct {
+  part: list<i32>[]
+}
+
+type Species struct {
+  id: Guid
+  name: str
+  disabled: bool
+  deleted: bool
+  meazure: str
+  parts: Prts 
+  sno: i32
+}
+
+type Region struct {
+  id: Guid
+  name: str
+  state: str
+  disabled: bool
+  deleted: bool
+  sno: i32
+}
+
+type SpeciesRegionRegion struct {
+  SpeciesRegionId: Guid
+  speciesRegionDisabled: bool
+  regionId: Guid
+  region: str
+  state: str
+  regionDisabled: bool
+}
+
+
+type SpeciesRegion struct {
+  speciesId: Guid
+  speciesName: str
+  speciesDisabled: bool
+  regions: list<SpeciesRegionRegion>[]
+}
+
+type AddSpeciesRegion struct {
+  speciesId: Guid
+  regionId: Guid
+}
+
+type DeleteSpeciesRegion struct {
+  speciesId: Guid
+  speciesRegionId: Guid
+}
+
+type DisableSpeciesRegion struct {
+  speciesId: Guid
+  speciesRegionId: Guid
+  disabled: bool
+}
+
+type AnimalPrice struct {
+  id: Guid
+  speciesRegionId: Guid
+  meazure: str
+  part: i32
+  price: f32
+  pDate: str
+  isActive: bool
+}
+
+type FetchPriceRequest struct {
+  speciesId: Guid
+  speciesRegionId: Guid
+  pDate: str
+  part: i32
+}
+
+type QuarterlyPrice struct {
+  price: f32
+  pDate: str
+}
+
+type SpeciesList list<Species>[]
+type RegionList list<Region>[]
+type AnimalPriceList list<AnimalPrice>
+type QuarterlyPriceList list<QuarterlyPrice>
+
+type AddNewSpecies Species
+type UpdateSpecies Species
+type AddNewRegion Region
+type UpdateRegion Region
+type ListSpecies void
+type ListRegions void
+type ListSpeciesRegions void
+type UpdatePrice list<AnimalPrice>[]
+type ListPricesForDate FetchPriceRequest
+type ListQuarterlyPrices FetchPriceRequest
+
+type SpeciesRegionList list<SpeciesRegion>[]
+
+type FgpRequest union {
+    AddNewSpecies
+    | UpdateSpecies
+    | ListSpecies
+    | AddNewRegion
+    | UpdateRegion
+    | ListRegions
+    | ListSpeciesRegions
+    | AddSpeciesRegion
+    | DisableSpeciesRegion
+    | DeleteSpeciesRegion
+    | UpdatePrice
+    | ListPricesForDate
+    | ListQuarterlyPrices
+}
+
+type FgpResponse union {
+    SpeciesList
+    | RegionList
+    | SpeciesRegionList
+    | SpeciesRegion
+    | AnimalPriceList
+    | QuarterlyPriceList
+    | AppResponse
+}

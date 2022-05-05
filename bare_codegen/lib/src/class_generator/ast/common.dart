@@ -303,13 +303,19 @@ class AstListType {
 
   unpackMethod(namestr) {
     final typeName = baseType.getDecl();
-    final baseunpackStr = baseType.unpackMethod('e');
+    var baseunpackStr = baseType.unpackMethod('e') as String;
+
+    /* Ugly hack */
+    if (!(baseunpackStr.startsWith("final"))) {
+      baseunpackStr = 'final ' + baseunpackStr;
+    }
+
     if (size == null) {
       return ('''
          ${namestr} = <${typeName}>[];
         final ${namestr}Length = p.unpackLength();
         for (var i = 0; i < ${namestr}Length; i++) {
-          final ${baseunpackStr};
+          ${baseunpackStr};
           ${namestr}.add(e);
         }
     ''');
@@ -317,7 +323,7 @@ class AstListType {
       return ('''
         ${namestr} = <${typeName}>[];
         for (var i = 0; i < ${size}; i++) {
-          final ${baseunpackStr};
+          ${baseunpackStr};
           ${namestr}.add(e);
         }
       ''');
