@@ -1,5 +1,5 @@
 /////////////////////////////////////////////////////////////////
-// Generated code by bare_codegen - Thu, May 05, 2022 08:55 AM //
+// Generated code by bare_codegen - Thu, May 05, 2022 02:44 PM //
 /////////////////////////////////////////////////////////////////
 
 part of 'fgp.dart';
@@ -163,7 +163,7 @@ extension AppResponseBare on AppResponse {
       return AppResponse(kind: _kind, value: _value);
     }
 
-    throw ('Invalid AppResponse enum option');
+    throw ('Invalid AppResponse union option -  ${bareIdx}');
   }
 }
 
@@ -174,7 +174,7 @@ extension AppResponseKindBare on AppResponseKind {
     if (this == AppResponseKind.APP_ERROR) return 2;
     if (this == AppResponseKind.APP_SUCCESS) return 3;
     if (this == AppResponseKind.OK_RESPONSE) return 4;
-    throw ('Invalid AppResponse enum option');
+    throw ('Invalid AppResponse union option - ${this}');
   }
 }
 
@@ -1148,7 +1148,7 @@ extension FgpRequestBare on FgpRequest {
       return FgpRequest(kind: _kind, value: _value);
     }
 
-    throw ('Invalid FgpRequest enum option');
+    throw ('Invalid FgpRequest union option -  ${bareIdx}');
   }
 }
 
@@ -1167,7 +1167,7 @@ extension FgpRequestKindBare on FgpRequestKind {
     if (this == FgpRequestKind.UPDATE_PRICE) return 10;
     if (this == FgpRequestKind.LIST_PRICES_FOR_DATE) return 11;
     if (this == FgpRequestKind.LIST_QUARTERLY_PRICES) return 12;
-    throw ('Invalid FgpRequest enum option');
+    throw ('Invalid FgpRequest union option - ${this}');
   }
 }
 
@@ -1242,7 +1242,7 @@ extension FgpResponseBare on FgpResponse {
       return FgpResponse(kind: _kind, value: _value);
     }
 
-    throw ('Invalid FgpResponse enum option');
+    throw ('Invalid FgpResponse union option -  ${bareIdx}');
   }
 }
 
@@ -1255,6 +1255,6 @@ extension FgpResponseKindBare on FgpResponseKind {
     if (this == FgpResponseKind.ANIMAL_PRICE_LIST) return 4;
     if (this == FgpResponseKind.QUARTERLY_PRICE_LIST) return 5;
     if (this == FgpResponseKind.APP_RESPONSE) return 6;
-    throw ('Invalid FgpResponse enum option');
+    throw ('Invalid FgpResponse union option - ${this}');
   }
 }

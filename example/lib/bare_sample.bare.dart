@@ -1,5 +1,5 @@
 /////////////////////////////////////////////////////////////////
-// Generated code by bare_codegen - Thu, May 05, 2022 08:55 AM //
+// Generated code by bare_codegen - Thu, May 05, 2022 02:44 PM //
 /////////////////////////////////////////////////////////////////
 
 part of 'bare_sample.dart';
@@ -75,7 +75,7 @@ extension DepartmentBare on Department {
     if (bareIdx == 2) return Department.CUSTOMER_SERVICE;
     if (bareIdx == 3) return Department.DEVELOPMENT;
     if (bareIdx == 99) return Department.JSMITH;
-    throw ('Invalid Department enum option');
+    throw ('Invalid Department enum option - ${bareIdx}');
   }
 
   int get _getBareIdx {
@@ -91,7 +91,7 @@ extension DepartmentBare on Department {
       case Department.JSMITH:
         return 99;
       default:
-        throw ('Invalid Department enum option');
+        throw ('Invalid Department enum option - ${this}');
     }
   }
 }

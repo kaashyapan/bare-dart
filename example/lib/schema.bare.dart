@@ -1,5 +1,5 @@
 /////////////////////////////////////////////////////////////////
-// Generated code by bare_codegen - Thu, May 05, 2022 08:55 AM //
+// Generated code by bare_codegen - Thu, May 05, 2022 02:44 PM //
 /////////////////////////////////////////////////////////////////
 
 part of 'schema.dart';
@@ -118,7 +118,7 @@ extension DepartmentBare on Department {
     if (bareIdx == 2) return Department.CUSTOMER_SERVICE;
     if (bareIdx == 3) return Department.DEVELOPMENT;
     if (bareIdx == 99) return Department.JSMITH;
-    throw ('Invalid Department enum option');
+    throw ('Invalid Department enum option - ${bareIdx}');
   }
 
   int get _getBareIdx {
@@ -134,7 +134,7 @@ extension DepartmentBare on Department {
       case Department.JSMITH:
         return 99;
       default:
-        throw ('Invalid Department enum option');
+        throw ('Invalid Department enum option - ${this}');
     }
   }
 }
@@ -513,7 +513,7 @@ extension RecordTypeBare on RecordType {
       return RecordType(kind: _kind, value: _value);
     }
 
-    throw ('Invalid RecordType enum option');
+    throw ('Invalid RecordType union option -  ${bareIdx}');
   }
 }
 
@@ -524,7 +524,7 @@ extension RecordTypeKindBare on RecordTypeKind {
     if (this == RecordTypeKind.PRIMITIVE_FIELDS) return 2;
     if (this == RecordTypeKind.ADDRESS) return 90;
     if (this == RecordTypeKind.DEPARTMENT) return 91;
-    throw ('Invalid RecordType enum option');
+    throw ('Invalid RecordType union option - ${this}');
   }
 }
 
@@ -589,7 +589,7 @@ extension Anon22Bare on Anon22 {
       return Anon22(kind: _kind, value: _value);
     }
 
-    throw ('Invalid Anon22 enum option');
+    throw ('Invalid Anon22 union option -  ${bareIdx}');
   }
 }
 
@@ -597,7 +597,7 @@ extension Anon22KindBare on Anon22Kind {
   int get getBareIdx {
     if (this == Anon22Kind.EMPLOYEE) return 0;
     if (this == Anon22Kind.TERMINATED_EMPLOYEE) return 1;
-    throw ('Invalid Anon22 enum option');
+    throw ('Invalid Anon22 union option - ${this}');
   }
 }
 
