@@ -124,7 +124,7 @@ class AstUnion {
         }
         ''');
     });
-    buffer.writeln("throw ('Invalid ${name} enum option');");
+    buffer.writeln("throw ('Invalid ${name} union option -  \$\{bareIdx\}');");
     buffer.writeln('}');
 
     buffer.writeln('}');
@@ -140,7 +140,7 @@ class AstUnion {
       buffer.writeln(
           'if (this == ${name + 'Kind.' + f.name.constantCase}) return ${f.idx};');
     });
-    buffer.writeln("throw ('Invalid ${name} enum option');");
+    buffer.writeln("throw ('Invalid ${name} union option - \$\{this\}');");
     buffer.writeln('}');
 
     buffer.writeln('}');

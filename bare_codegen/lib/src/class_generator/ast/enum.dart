@@ -57,7 +57,7 @@ class AstEnum {
     fields.forEach((f) {
       buffer.writeln('if (bareIdx == ${f.idx}) return ${name + '.' + f.name};');
     });
-    buffer.writeln(" throw ('Invalid ${name} enum option');");
+    buffer.writeln(" throw ('Invalid ${name} enum option - \$\{bareIdx\}');");
     buffer.writeln('}');
 
     buffer.writeln('''
@@ -68,7 +68,8 @@ class AstEnum {
     fields.forEach((f) {
       buffer.writeln('case ${name + '.' + f.name}: return ${f.idx};');
     });
-    buffer.writeln(" default: throw ('Invalid ${name} enum option');");
+    buffer.writeln(
+        " default: throw ('Invalid ${name} enum option - \$\{this\}');");
     buffer.writeln('}');
     buffer.writeln('}');
 
