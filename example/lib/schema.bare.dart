@@ -1,5 +1,5 @@
 /////////////////////////////////////////////////////////////////
-// Generated code by bare_codegen - Thu, May 05, 2022 06:11 PM //
+// Generated code by bare_codegen - Thu, May 05, 2022 11:07 PM //
 /////////////////////////////////////////////////////////////////
 
 part of 'schema.dart';
@@ -162,7 +162,7 @@ extension NumFieldsBare on NumFields {
     p.packUint16(fld8);
     p.packUint32(fld9);
     p.packUint64(fld10);
-    p.packDouble(fld11);
+    p.packFloat(fld11);
     p.packDouble(fld12);
     return p;
   }
@@ -178,7 +178,7 @@ extension NumFieldsBare on NumFields {
     final fld8 = p.unpackUint16();
     final fld9 = p.unpackUint32();
     final fld10 = p.unpackUint64();
-    final fld11 = p.unpackDouble();
+    final fld11 = p.unpackFloat();
     final fld12 = p.unpackDouble();
     return NumFields(
         fld1: fld1,

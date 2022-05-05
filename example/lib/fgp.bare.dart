@@ -1,5 +1,5 @@
 /////////////////////////////////////////////////////////////////
-// Generated code by bare_codegen - Thu, May 05, 2022 06:11 PM //
+// Generated code by bare_codegen - Thu, May 05, 2022 11:07 PM //
 /////////////////////////////////////////////////////////////////
 
 part of 'fgp.dart';
@@ -572,7 +572,7 @@ extension AnimalPriceBare on AnimalPrice {
     speciesRegionId.pack(p);
     p.packString(meazure);
     p.packInt32(part);
-    p.packDouble(price);
+    p.packFloat(price);
     p.packString(pDate);
     p.packBool(isActive);
     return p;
@@ -587,7 +587,7 @@ extension AnimalPriceBare on AnimalPrice {
 
     final meazure = p.unpackString();
     final part = p.unpackInt32();
-    final price = p.unpackDouble();
+    final price = p.unpackFloat();
     final pDate = p.unpackString();
     final isActive = p.unpackBool();
     return AnimalPrice(
@@ -651,13 +651,13 @@ extension QuarterlyPriceBare on QuarterlyPrice {
   }
 
   Packer pack(Packer p) {
-    p.packDouble(price);
+    p.packFloat(price);
     p.packString(pDate);
     return p;
   }
 
   static QuarterlyPrice unpack(Unpacker p) {
-    final price = p.unpackDouble();
+    final price = p.unpackFloat();
     final pDate = p.unpackString();
     return QuarterlyPrice(price: price, pDate: pDate);
   }

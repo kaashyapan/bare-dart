@@ -59,7 +59,7 @@ class AstPrimitiveType {
     if (name == 'u32') return 'p.packUint32(${namestr})';
     if (name == 'u64') return 'p.packUint64(${namestr})';
     if (name == 'uint') return 'p.packUint64(${namestr})';
-    if (name == 'f32') return 'p.packDouble(${namestr})';
+    if (name == 'f32') return 'p.packFloat(${namestr})';
     if (name == 'f64') return 'p.packDouble(${namestr})';
     if (name == 'bool') return 'p.packBool(${namestr})';
 
@@ -80,7 +80,7 @@ class AstPrimitiveType {
     if (name == 'u32') return 'final ${namestr} = p.unpackUint32()';
     if (name == 'u64') return 'final ${namestr} = p.unpackUint64()';
     if (name == 'uint') return 'final ${namestr} = p.unpackUint64()';
-    if (name == 'f32') return 'final ${namestr} = p.unpackDouble()';
+    if (name == 'f32') return 'final ${namestr} = p.unpackFloat()';
     if (name == 'f64') return 'final ${namestr} = p.unpackDouble()';
     if (name == 'bool') return 'final ${namestr} = p.unpackBool()';
 
