@@ -1,3 +1,6 @@
+## 0.1.3
+- Do not print date in generated file
+
 ## 0.1.2
 - Removed web as a supported platform
 

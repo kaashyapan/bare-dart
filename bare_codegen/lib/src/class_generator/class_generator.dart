@@ -31,7 +31,7 @@ String makeModelsFromAst(AssetId methodsId, List<dynamic> ast) {
       Config.s().immutable ? "import 'package:meta/meta.dart';" : '';
   final content = '''
         /////////////////////////////////////////////////////////////////
-        // Generated code by bare_codegen - ${date} //
+        // Generated code by bare_codegen. Do not edit by hand.        //
         /////////////////////////////////////////////////////////////////
 
         import 'package:bare/bare.dart';
@@ -56,7 +56,7 @@ String makeMethodsFromAst(AssetId modelId, List<dynamic> ast) {
 
   final content = '''
         /////////////////////////////////////////////////////////////////
-        // Generated code by bare_codegen - ${date} //
+        // Generated code by bare_codegen - Do not edit by hand.       //
         /////////////////////////////////////////////////////////////////
 
         part of '${modelId.pathSegments.last}';

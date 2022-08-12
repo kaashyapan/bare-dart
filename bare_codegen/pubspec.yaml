@@ -1,6 +1,6 @@
 name: bare_codegen
 description: Code generator to covert BARE schema to Dart classes
-version: 0.1.2
+version: 0.1.3
 homepage: https://github.com/kaashyapan/bare-dart
 repository: https://github.com/kaashyapan/bare-dart
 platforms:
